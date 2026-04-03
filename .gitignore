@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build outputs (pnpm + tsup)
+dist/
+**/dist/
+
+# Rust / Cargo
+target/
+**/target/
+
+# Cargo lockfile (library crate; keep if you publish a binary workspace)
+# crates/tauri-easy-updater/Cargo.lock
+
+# Logs & caches
+*.log
+npm-debug.log*
+pnpm-debug.log*
+pnpm-error.log*
+.eslintcache
+.turbo/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE / editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Tauri
+src-tauri/target/
