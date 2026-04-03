@@ -9,9 +9,6 @@ dist/
 target/
 **/target/
 
-# Cargo lockfile (library crate; keep if you publish a binary workspace)
-# crates/tauri-easy-updater/Cargo.lock
-
 # Logs & caches
 *.log
 npm-debug.log*
