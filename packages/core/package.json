@@ -1,0 +1,26 @@
+{
+  "name": "tauri-easy-updater",
+  "version": "0.1.0",
+  "description": "Hassle-free auto-updates for Tauri apps. No signing keys required.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.0",
+    "@tauri-apps/api": ">=1.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@tauri-apps/api": "^1.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.6.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\""
+  }
+}
+

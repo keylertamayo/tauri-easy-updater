@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Install JS deps
+        run: pnpm install
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Build JS packages
+        run: pnpm build
+      - name: Build Rust crate
+        run: cargo build -p tauri-easy-updater
+
