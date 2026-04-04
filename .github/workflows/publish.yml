@@ -29,7 +29,8 @@ jobs:
             libgtk-3-dev \
             libayatana-appindicator3-dev \
             librsvg2-dev \
-            pkg-config
+            pkg-config \
+            libsoup-2.4-dev
       - name: Install JS deps
         run: pnpm install
       - name: Build JS packages
