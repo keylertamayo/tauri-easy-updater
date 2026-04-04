@@ -30,7 +30,7 @@ fn main() {
 #### Paso 2 – Frontend
 
 ```bash
-npm install tauri-easy-updater
+npm install @meacore-empresa/tauri-easy-updater
 ```
 
 ```tsx
@@ -38,7 +38,7 @@ import {
   useUpdateChecker,
   UpdateBanner,
   createGitHubProvider,
-} from 'tauri-easy-updater';
+} from '@meacore-empresa/tauri-easy-updater';
 
 function App() {
   const { updateInfo, dismiss } = useUpdateChecker({
@@ -60,7 +60,7 @@ function App() {
 #### Paso 3 – Al hacer release
 
 ```bash
-npx tauri-easy-updater-cli generate-manifest \
+npx @meacore-empresa/tauri-easy-updater-cli generate-manifest \
   --version 1.1.0 \
   --base-url "https://github.com/myuser/myapp/releases/download/v1.1.0"
 # Sube update-manifest.json a tu release de GitHub

@@ -1,5 +1,5 @@
 {
-  "name": "tauri-easy-updater",
+  "name": "@meacore-empresa/tauri-easy-updater",
   "version": "0.1.0",
   "description": "Hassle-free auto-updates for Tauri apps. No signing keys required.",
   "main": "./dist/index.js",
