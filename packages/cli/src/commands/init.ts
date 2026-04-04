@@ -41,14 +41,12 @@ export function initCommand(program: Command): void {
 
       const tauriConf = await readJsonIfExists<TauriConfig>(tauriConfPath);
       if (!tauriConf) {
-        // eslint-disable-next-line no-console
         console.error('tauri.conf.json not found in current directory.');
       }
 
       const appName = tauriConf?.package?.productName ?? '';
       const version = tauriConf?.package?.version ?? '';
 
-      // eslint-disable-next-line no-console
       console.log(`Detected appName="${appName}" version="${version}" (if available).`);
 
       const response = await prompts([
@@ -67,7 +65,6 @@ export function initCommand(program: Command): void {
       ]);
 
       if (!response.owner || !response.repo) {
-        // eslint-disable-next-line no-console
         console.error('Initialization cancelled.');
         return;
       }
@@ -86,7 +83,6 @@ export function initCommand(program: Command): void {
 
       await fs.writeFile(updaterConfigPath, `${JSON.stringify(newConfig, null, 2)}\n`, 'utf8');
 
-      // eslint-disable-next-line no-console
       console.log(`Created ${path.relative(cwd, updaterConfigPath)}`);
     });
 }

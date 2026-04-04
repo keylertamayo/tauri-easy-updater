@@ -15,7 +15,6 @@ generateManifestCommand(program);
 publishCommand(program);
 
 program.parseAsync(process.argv).catch((err) => {
-  // eslint-disable-next-line no-console
   console.error(err instanceof Error ? err.message : err);
   process.exitCode = 1;
 });

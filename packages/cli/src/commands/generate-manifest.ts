@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+import type { Dirent } from 'fs';
 import path from 'path';
 import type { Command } from 'commander';
 
@@ -39,7 +40,7 @@ async function detectVersion(cwd: string, explicit?: string): Promise<string> {
   const cargoPath = path.join(cwd, 'Cargo.toml');
   try {
     const raw = await fs.readFile(cargoPath, 'utf8');
-    const match = raw.match(/version\s*=\s*\"([^\"]+)\"/);
+    const match = raw.match(/version\s*=\s*"([^"]+)"/);
     if (match) {
       return match[1];
     }
@@ -73,7 +74,7 @@ async function detectArtifacts(
   const entries: Array<{ platform: string; filename: string }> = [];
 
   async function walk(dir: string) {
-    let items: fs.Dirent[];
+    let items: Dirent[];
     try {
       items = await fs.readdir(dir, { withFileTypes: true });
     } catch {
@@ -133,7 +134,6 @@ export function generateManifestCommand(program: Command): void {
       const notes = await readNotes(cwd, opts);
 
       if (!opts.baseUrl) {
-        // eslint-disable-next-line no-console
         console.error('--base-url is required');
         process.exitCode = 1;
         return;
@@ -145,7 +145,6 @@ export function generateManifestCommand(program: Command): void {
 
       const detected = await detectArtifacts(artifactsDir);
       if (detected.length === 0) {
-        // eslint-disable-next-line no-console
         console.warn('No artifacts detected in', artifactsDir);
       }
 
@@ -153,7 +152,6 @@ export function generateManifestCommand(program: Command): void {
       for (const entry of detected) {
         const url = `${opts.baseUrl!.replace(/\/+$/, '')}/${entry.filename}`;
         platforms[entry.platform] = { url };
-        // eslint-disable-next-line no-console
         console.log(`✓ Detected: ${entry.platform} → ${entry.filename}`);
       }
 
@@ -169,7 +167,6 @@ export function generateManifestCommand(program: Command): void {
         : path.join(cwd, opts.output!);
       await fs.writeFile(outPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
 
-      // eslint-disable-next-line no-console
       console.log(`✓ Generated: ${path.relative(cwd, outPath)}`);
     });
 }

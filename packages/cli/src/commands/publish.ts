@@ -179,7 +179,6 @@ export function publishCommand(program: Command): void {
 
       const token = opts.token || process.env.GITHUB_TOKEN;
       if (!token) {
-        // eslint-disable-next-line no-console
         console.error('GitHub token is required (--token or GITHUB_TOKEN env)');
         process.exitCode = 1;
         return;
@@ -200,7 +199,6 @@ export function publishCommand(program: Command): void {
 
       await uploadAsset(token, owner, repo, release.id, assetName, content);
 
-      // eslint-disable-next-line no-console
       console.log(
         `✓ Uploaded ${assetName} to release ${tag} in ${owner}/${repo}`
       );

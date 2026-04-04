@@ -26,5 +26,5 @@ jobs:
       - name: Build JS packages
         run: pnpm build
       - name: Build Rust crate
-        run: cargo build -p tauri-easy-updater
+        run: cargo build --manifest-path crates/tauri-easy-updater/Cargo.toml
 
