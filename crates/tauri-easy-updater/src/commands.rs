@@ -55,13 +55,18 @@ pub fn check_update(params: CheckUpdateParams) -> Result<UpdateInfo, String> {
     let platform_info = select_platform(&manifest, &platform_key)
         .ok_or_else(|| format!("No platform info for {platform_key}"))?;
 
+    let download_url = platform_info.url.clone();
+    let latest_version = manifest.version.clone();
+    let release_notes = manifest.notes.clone();
+    let pub_date = manifest.pub_date.clone();
+
     Ok(UpdateInfo {
         has_update,
         current_version: params.current_version,
-        latest_version: manifest.version,
-        download_url: platform_info.url.clone(),
-        release_notes: manifest.notes.clone(),
-        pub_date: manifest.pub_date.clone(),
+        latest_version,
+        download_url,
+        release_notes,
+        pub_date,
     })
 }
 
