@@ -35,7 +35,7 @@ jobs:
             libayatana-appindicator3-dev \
             librsvg2-dev \
             pkg-config \
-            libsoup-2.4-dev
+            libsoup-3.0-dev
 
       - name: Install JS deps
         run: pnpm install
