@@ -55,6 +55,11 @@ jobs:
             exit 1
           fi
 
+      - name: Configure pkg-config for JavaScriptCore
+        run: |
+          echo "PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig:$PKG_CONFIG_PATH" >> $GITHUB_ENV
+          echo "LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH" >> $GITHUB_ENV
+
       - name: Install JS deps
         run: pnpm install
 
